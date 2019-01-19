@@ -9,7 +9,7 @@ class Field {
 
 let widths = [1, 2, 3, 4, 13, 12, 11, 10, 9, 10, 11, 12, 13, 4, 3, 2, 1];
 let offsets = [4, 4, 4, 4, 0, 1, 2, 3, 4, 4, 4, 4, 4, 9, 10, 11, 12];
-let offsetDraw = [7, 6, 6, 5, 1, 1, 2, 2, 3, 2, 2, 1, 1, 5, 6, 6, 7];
+let offsetDraw = [6, 5, 5, 4, 0, 0, 1, 1, 2, 1, 1, 0, 0, 4, 5, 5, 6];
 
 /*
 let fields = new Array(BOARD_HEIGHT);
@@ -30,7 +30,7 @@ function draw() {
       line.style.marginLeft = '20px';
     }
     document.getElementById('board').appendChild(line);
-    for (let j = 0; j < 17; j++) {
+    for (let j = 0; j <= 13; j++) {
       if (j <= offsetDraw[i] || j > offsetDraw[i] + widths[i]) {
         let field = document.createElement('div');
         field.setAttribute('class', 'empty');
