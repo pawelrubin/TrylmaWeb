@@ -1,6 +1,9 @@
+body {
+  background-color: aquamarine;
+}
+
 #board {
-  margin: auto;
-  width: 640px;
+
 }
 
 div.field {
@@ -9,7 +12,6 @@ div.field {
   height: 30px;
   background-color: gray;
   margin-right: 10px;
-  float: left;
 }
 
 div.field:hover {
@@ -18,22 +20,11 @@ div.field:hover {
   height: 30px;
   background-color: gray;
   margin-right: 10px;
-  float: left;
   opacity: 0.5;
 }
 
 div.line {
-  height: 30px;
-  float: none;
+  display: flex;
+  justify-content: center;
   margin-bottom: 6px;
-}
-
-div.empty {
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  margin-right: 10px;
-  float: left;
-  background-color: gray;
-  opacity: 0.5;
 }
