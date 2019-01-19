@@ -5,6 +5,7 @@ import akka.stream.Materializer;
 import play.mvc.Controller;
 import play.mvc.Result;
 import play.mvc.WebSocket;
+import views.html.index;
 
 /**
  * This controller contains an action to handle HTTP requests
@@ -18,6 +19,10 @@ public class Application extends Controller {
    * this method will be called when the application receives a
    * <code>GET</code> request with a path of <code>/</code>.
    */
+    public Result index() {
+      return ok(index.render("Testowańsko"));
+    }
+
     public Result boardJs() {
         return ok(views.js.board.render());
     }
