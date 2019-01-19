@@ -39,8 +39,18 @@ function draw() {
       } else {
         let field = document.createElement('div');
         field.setAttribute('class', 'field');
+        let y = offsets[i] + j - offsetDraw[i] - 1;
+        field.setAttribute("id", i + "," + y);
+        field.addEventListener("click", function () {
+          click(this.id);
+        });
         document.getElementById('line' + i).appendChild(field);
       }
     }
   }
+}
+
+function click(id) {
+  let cords = id.split(',');
+  console.log("Clicked " + cords[0] + "," + cords[1]);
 }
