@@ -1,0 +1,25 @@
+#board {
+
+}
+
+div.field {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  background-color: gray;
+  margin-right: 10px;
+  float: left;
+}
+
+div.line {
+  height: 30px;
+  float: none;
+  margin-bottom: 10px;
+}
+
+div.empty {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  opacity: 0.0;
+}
