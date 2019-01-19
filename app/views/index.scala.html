@@ -7,8 +7,8 @@
   <title>@title</title>
   <link rel="stylesheet" href="@routes.Assets.at("stylesheets/board.css")">
 </head>
-<body onload="draw();">
+<body id="body">
+  <div id="board"></div>
   <script type="text/javascript" src="@routes.Application.boardJs()"></script>
-  <div id="board" ></div>
 </body>
 </html>

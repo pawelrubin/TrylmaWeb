@@ -1,5 +1,9 @@
-let BOARD_HEIGHT = 17
+let BOARD_HEIGHT = 17;
+let widths = [1, 2, 3, 4, 13, 12, 11, 10, 9, 10, 11, 12, 13, 4, 3, 2, 1];
+let offsets = [4, 4, 4, 4, 0, 1, 2, 3, 4, 4, 4, 4, 4, 9, 10, 11, 12];
+let offsetDraw = [6, 5, 5, 4, 0, 0, 1, 1, 2, 1, 1, 0, 0, 4, 5, 5, 6];
 
+/*
 class Field {
   constructor(x, y) {
     this.x = x;
@@ -7,11 +11,6 @@ class Field {
   }
 }
 
-let widths = [1, 2, 3, 4, 13, 12, 11, 10, 9, 10, 11, 12, 13, 4, 3, 2, 1];
-let offsets = [4, 4, 4, 4, 0, 1, 2, 3, 4, 4, 4, 4, 4, 9, 10, 11, 12];
-let offsetDraw = [6, 5, 5, 4, 0, 0, 1, 1, 2, 1, 1, 0, 0, 4, 5, 5, 6];
-
-/*
 let fields = new Array(BOARD_HEIGHT);
 for (let i = 0; i < BOARD_HEIGHT; i++) {
   fields[i] = new Array(widths[i]);
@@ -20,6 +19,8 @@ for (let i = 0; i < BOARD_HEIGHT; i++) {
   }
 }
 */
+
+window.addEventListener("load", draw);
 
 function draw() {
   for (let i = 0; i < 17; i++) {
