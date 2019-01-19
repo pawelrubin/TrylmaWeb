@@ -1,15 +1,10 @@
-name := "trylmaweb"
- 
-version := "1.0" 
-      
-lazy val `trylmaweb` = (project in file(".")).enablePlugins(PlayJava)
+name := """trylmaweb"""
+organization := "tp"
 
-resolvers += "scalaz-bintray" at "https://dl.bintray.com/scalaz/releases"
-      
-scalaVersion := "2.11.11"
+version := "1.0-SNAPSHOT"
 
-libraryDependencies ++= Seq( javaJdbc , cache , javaWs )
+lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
-//unmanagedResourceDirectories in Test +=  baseDirectory ( _ /"target/web/public/test" )
+scalaVersion := "2.12.8"
 
-      
+libraryDependencies += guice
