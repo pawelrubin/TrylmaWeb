@@ -115,6 +115,8 @@ function addRedPawns() {
   }
 }
 
+//TODO fix bug that removes hover effect on fields after movement
+
 function movePawn(pawn, destination) {
   if (pawn != null && pawn !== destination) {
     document.getElementById(destination).style.backgroundColor = document.getElementById(pawn).style.backgroundColor;

@@ -10,16 +10,16 @@ body {
 
 div.field {
   border-radius: 50%;
-  width: 2.5vmax;
-  height: 2.5vmax;
+  width: 4.35vmin;
+  height: 4.35vmin;
   background-color: gray;
   margin-right: 10px;
 }
 
 div.field:hover {
   border-radius: 50%;
-  width: 2.5vmax;
-  height: 2.5vmax;
+  width: 4.35vmin;
+  height: 4.35vmin;
   background-color: gray;
   margin-right: 10px;
   opacity: 0.5;
