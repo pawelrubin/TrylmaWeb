@@ -8,3 +8,8 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava)
 scalaVersion := "2.12.8"
 
 libraryDependencies += guice
+libraryDependencies += ws
+
+libraryDependencies += "org.webjars" %% "webjars-play" % "2.6.2"
+libraryDependencies += "org.webjars" % "flot" % "0.8.3"
+libraryDependencies += "org.webjars" % "bootstrap" % "3.3.6"

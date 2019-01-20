@@ -3,10 +3,13 @@
 # ~~~~
 
 # Home page
-# GET     /                           controllers.Application.oldIndex
-GET        /                                controllers.Application.index
+GET         /                           controllers.Application.index
+GET         /testowansko                               controllers.Application.testowansko
 # GET        /assets/javascripts/board.js        controllers.Application.boardJs
-GET        /app/views/board.scala.js        controllers.Application.boardJs
+GET         /app/views/board.scala.js        controllers.Application.boardJs
+GET         /game                           controllers.Application.game
 
 # Map static resources from the /public folder to the /assets URL path
 GET        /assets/*file                    controllers.Assets.at(path="/public", file)
+
+->      /webjars                    webjars.Routes
