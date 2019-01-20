@@ -47,6 +47,9 @@ function click(id) {
     document.getElementById(pawn).style.opacity = '1.0';
     pawn = null;
   } else if (color !== '#808080') {
+    if (pawn != null) {
+      document.getElementById(pawn).style.opacity = '1.0';
+    }
     pawn = id;
     document.getElementById(id).style.opacity = '0.4';
   }
