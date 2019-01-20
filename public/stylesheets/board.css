@@ -8,16 +8,16 @@ body {
 
 div.field {
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 2.5vmax;
+  height: 2.5vmax;
   background-color: gray;
   margin-right: 10px;
 }
 
 div.field:hover {
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 2.5vmax;
+  height: 2.5vmax;
   background-color: gray;
   margin-right: 10px;
   opacity: 0.5;
