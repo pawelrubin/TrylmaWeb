@@ -1,14 +1,74 @@
 @(url: String, webJarsUtil: org.webjars.play.WebJarsUtil)
-
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset=utf-8 />
-  <title>Testowańsko</title>
-  <link rel="stylesheet" href="@routes.Assets.at("stylesheets/board.css")">
-</head>
-<body id="body">
-  <div id="board"></div>
-  <script type="text/javascript" src="@routes.Application.boardJs()"></script>
-</body>
+<html lang="en">
+    <head>
+        <meta charset=utf-8 />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        @Html(webJarsUtil.css("bootstrap.min.css"))
+        @Html(webJarsUtil.css("bootstrap-theme.min.css"))
+
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/board.css")">
+        <title>Testowańsko</title>
+
+        </head>
+    <body id="body">
+        @*<div id="board"></div>*@
+        @*<script type="text/javascript" src="@routes.Application.boardJs()"></script>*@
+        <div class="row">
+            <div class="col-lg-12">
+                <ul id="messages"></ul>
+            </div>
+        </div>
+        <div class="footer navbar-fixed-bottom">
+            <div class="row">
+                <div align="center" class="col-xs-8 col-sm-9">
+                    <input align="center" id="message" placeholder="oldX oldY newX newY" type="text"
+                    autofocus
+                    autocomplete="off" spellcheck="false" autocorrect="off" />
+                    <button id="send" type="submit">Move</button>
+                </div>
+            </div>
+        </div>
+
+        @*to musi tu byc z jakiegos powodu xd*@
+        @Html(webJarsUtil.script("jquery.min.js"))
+
+        <script language="javascript">
+                var $messages = $("#messages"),
+                        $send = $("#send"),
+                        $message = $("#message"),
+                        connection = new WebSocket("@url");
+
+
+                $send.prop("disabled", true);
+
+                var send = function () {
+                    var text = $message.val();
+                    $message.val("");
+                    connection.send(text);
+                };
+
+                connection.onopen = function () {
+                    $send.prop("disabled", false);
+                    $messages.prepend($("<li class='bg-info' style='font-size: 1.5em'>Connected</li>"));
+                    $send.on('click', send);
+                    $message.keypress(function (event) {
+                        var keycode = (event.keyCode ? event.keyCode : event.which);
+                        if (keycode == '13') {
+                            send();
+                        }
+                    });
+                };
+
+                connection.onerror = function (error) {
+                    console.log('WebSocket Error ', error);
+                };
+
+                connection.onmessage = function (event) {
+                    $messages.append($("<li style='font-size: 1.5em'>" + event.data + "</li>"))
+                }
+        </script>
+    </body>
 </html>

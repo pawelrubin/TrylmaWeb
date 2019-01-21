@@ -6,15 +6,19 @@ import akka.event.Logging;
 import akka.event.LoggingAdapter;
 import akka.japi.Pair;
 import akka.japi.pf.PFBuilder;
+import akka.stream.Attributes;
 import akka.stream.Materializer;
 import akka.stream.javadsl.*;
 import com.google.inject.Inject;
+import play.http.websocket.Message;
 import play.libs.F;
 import play.mvc.*;
+import scala.collection.immutable.List;
 import views.html.index;
 
 import java.net.URI;
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionStage;
 
 import org.webjars.play.WebJarsUtil;
 
@@ -26,7 +30,6 @@ public class Application extends Controller {
 
   private final Flow<String, String, NotUsed> userFlow;
   private final WebJarsUtil webJarsUtil;
-
 
   @Inject
   public Application(ActorSystem actorSystem,
@@ -52,8 +55,9 @@ public class Application extends Controller {
   public Result index() {
     Http.Request request = request();
     String url = routes.Application.game().webSocketURL(request);
-    return Results.ok(index.render(url, webJarsUtil));
+    return Results.ok(views.html.index.render(url, webJarsUtil));
   }
+
   /**
    * An action that renders an HTML page with a welcome message.
    * The configuration in the <code>routes</code> file means that
