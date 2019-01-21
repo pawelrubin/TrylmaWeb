@@ -26,7 +26,7 @@ function draw() {
     let line = document.createElement('div');
     line.setAttribute("id", "line" + i);
     line.setAttribute("class", "line");
-    document.getElementById('board').appendChild(line);
+    document.getElementById('star').appendChild(line);
     for (let j = 0; j < widths[i]; j++) {
       let field = document.createElement('div');
       field.setAttribute('class', 'field');
@@ -39,6 +39,10 @@ function draw() {
       document.getElementById('line' + i).appendChild(field);
     }
   }
+}
+
+function table() {
+
 }
 
 function click(id) {

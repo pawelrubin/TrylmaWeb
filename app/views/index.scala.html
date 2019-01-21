@@ -1,14 +1,21 @@
-@(title: String)
+@(title: String)(color: String)(turn: String)
 
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset=utf-8 />
-  <title>@title</title>
-  <link rel="stylesheet" href="@routes.Assets.at("stylesheets/board.css")">
-</head>
-<body id="body">
-  <div id="board"></div>
-  <script type="text/javascript" src="@routes.Application.boardJs()"></script>
-</body>
+    <head>
+        <meta charset=utf-8 />
+        <title>@title</title>
+        <link rel="stylesheet" href="@routes.Assets.at("stylesheets/board.css")">
+    </head>
+    <body id="body">
+        <div id="board">
+            <div id="star"></div>
+        </div>
+        <div id="menu">
+            <button id="endTurn">End turn</button>
+            <p>You are @color player</p>
+            <p>@turn player's turn</p>
+        </div>
+        <script type="text/javascript" src="@routes.Application.boardJs()"></script>
+    </body>
 </html>
