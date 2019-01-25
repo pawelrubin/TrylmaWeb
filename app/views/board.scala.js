@@ -41,21 +41,17 @@ function draw() {
   }
 }
 
-function table() {
-
-}
-
 function click(id) {
   let color = colorToHex(window.getComputedStyle(document.getElementById(id), null)['backgroundColor']);
   if (pawn === id) {
-    document.getElementById(pawn).style.opacity = '1.0';
+    document.getElementById(pawn).classList.remove('clicked');
     pawn = null;
   } else if (color !== '#808080') {
     if (pawn != null) {
-      document.getElementById(pawn).style.opacity = '1.0';
+      document.getElementById(pawn).classList.remove('clicked');
     }
     pawn = id;
-    document.getElementById(id).style.opacity = '0.4';
+    document.getElementById(id).classList.add('clicked');
   }
 }
 
@@ -64,7 +60,7 @@ function addGreenPawns() {
     for (let j = 0; j <= i; j++) {
       let y = offsets[i] + j;
       let id = i + "," + y;
-      document.getElementById(id).style.backgroundColor = 'green';
+      document.getElementById(id).classList.add('green');
     }
   }
 }
@@ -74,7 +70,7 @@ function addYellowPawns() {
     for (let j = 0; j < widths[i]; j++) {
       let y = offsets[i] + j;
       let id = i + "," + y;
-      document.getElementById(id).style.backgroundColor = 'yellow';
+      document.getElementById(id).classList.add('yellow');
     }
   }
 }
@@ -84,7 +80,7 @@ function addBluePawns() {
     for (let j = 0; j < 8 - i; j++) {
       let y = offsets[i] + j;
       let id = i + "," + y;
-      document.getElementById(id).style.backgroundColor = 'blue';
+      document.getElementById(id).classList.add('blue');
     }
   }
 }
@@ -94,7 +90,7 @@ function addWhitePawns() {
     for (let j = 9; j <= 16 - i; j++) {
       let y = offsets[i] + j;
       let id = i + "," + y;
-      document.getElementById(id).style.backgroundColor = 'white';
+      document.getElementById(id).classList.add('white');
     }
   }
 }
@@ -104,7 +100,7 @@ function addBlackPawns() {
     for (let j = 0; j < widths[i - 9]; j++) {
       let y = offsets[i] + j;
       let id = i + "," + y;
-      document.getElementById(id).style.backgroundColor = 'black';
+      document.getElementById(id).classList.add('black');
     }
   }
 }
@@ -114,18 +110,16 @@ function addRedPawns() {
     for (let j = 9; j < widths[i]; j++) {
       let y = offsets[i] + j;
       let id = i + "," + y;
-      document.getElementById(id).style.backgroundColor = 'red';
+      document.getElementById(id).classList.add('red');
     }
   }
 }
 
-//TODO fix bug that removes hover effect on fields after movement
-
 function movePawn(pawn, destination) {
   if (pawn != null && pawn !== destination) {
-    document.getElementById(destination).style.backgroundColor = document.getElementById(pawn).style.backgroundColor;
-    document.getElementById(pawn).style.backgroundColor = 'gray';
-    document.getElementById(pawn).style.opacity = '1.0';
+    document.getElementById(destination).classList.add(document.getElementById(pawn).classList[1]);
+    document.getElementById(pawn).classList.remove('clicked');
+    document.getElementById(pawn).classList.remove(document.getElementById(pawn).classList[1]);
     pawn = null;
   }
 }

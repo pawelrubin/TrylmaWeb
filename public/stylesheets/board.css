@@ -48,6 +48,34 @@ div.field:hover {
   opacity: 0.5;
 }
 
+div.field.red {
+  background-color: red;
+}
+
+div.field.green {
+  background-color: green;
+}
+
+div.field.blue {
+  background-color: blue;
+}
+
+div.field.black {
+  background-color: black;
+}
+
+div.field.white {
+  background-color: white;
+}
+
+div.field.yellow {
+  background-color: yellow;
+}
+
+div.field.clicked {
+  opacity: 0.4;
+}
+
 div.line {
   display: flex;
   justify-content: center;
