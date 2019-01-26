@@ -2,24 +2,53 @@ const BOARD_HEIGHT = 17;
 const widths = [1, 2, 3, 4, 13, 12, 11, 10, 9, 10, 11, 12, 13, 4, 3, 2, 1];
 const offsets = [4, 4, 4, 4, 0, 1, 2, 3, 4, 4, 4, 4, 4, 9, 10, 11, 12];
 let pawn;
+let fields;
 
-let fields = new Array(BOARD_HEIGHT);
-for (let i = 0; i < BOARD_HEIGHT; i++) {
-    fields[i] = new Array(BOARD_HEIGHT);
-    for (let j = 0; j < widths[i]; j++) {
-        fields[i][j + offsets[i]] = 'gray';
-    }
-}
-
-window.addEventListener('load', addGreenPawns);
-window.addEventListener('load', addYellowPawns);
-window.addEventListener('load', addBluePawns);
-window.addEventListener('load', addWhitePawns);
-window.addEventListener('load', addBlackPawns);
-window.addEventListener('load', addRedPawns);
 window.addEventListener("load", function () {
-    draw(fields);
+    draw(generateFields(6));
 });
+
+function generateFields(numberOfPlayers) {
+    fields = new Array(BOARD_HEIGHT);
+    for (let i = 0; i < BOARD_HEIGHT; i++) {
+        fields[i] = new Array(BOARD_HEIGHT);
+        for (let j = 0; j < widths[i]; j++) {
+            fields[i][j + offsets[i]] = 'gray';
+        }
+    }
+
+    switch (numberOfPlayers) {
+        case 2: {
+            addGreenPawns();
+            addYellowPawns();
+            break;
+        }
+        case 3: {
+            addGreenPawns();
+            addBlackPawns();
+            addRedPawns();
+            break;
+        }
+        case 4: {
+            addBluePawns();
+            addWhitePawns();
+            addBlackPawns();
+            addRedPawns();
+            break;
+        }
+        case 6: {
+            addGreenPawns();
+            addYellowPawns();
+            addBluePawns();
+            addWhitePawns();
+            addBlackPawns();
+            addRedPawns();
+            break;
+        }
+    }
+
+    return fields;
+}
 
 function draw(tab) {
     for (let i = 0; i < 17; i++) {
@@ -59,9 +88,6 @@ function click(id) {
 function addGreenPawns() {
     for (let i = 0; i < 4; i++) {
         for (let j = 0; j <= i; j++) {
-            //let y = offsets[i] + j;
-            //let id = i + "," + y;
-            //document.getElementById(id).classList.add('green');
             fields[i][j + offsets[i]] = 'green';
         }
     }
@@ -70,9 +96,6 @@ function addGreenPawns() {
 function addYellowPawns() {
     for (let i = 13; i < 17; i++) {
         for (let j = 0; j < widths[i]; j++) {
-            //let y = offsets[i] + j;
-            //let id = i + "," + y;
-            //document.getElementById(id).classList.add('yellow');
             fields[i][j + offsets[i]] = 'yellow';
         }
     }
@@ -81,9 +104,6 @@ function addYellowPawns() {
 function addBluePawns() {
     for (let i = 4; i < 8; i++) {
         for (let j = 0; j < 8 - i; j++) {
-            //let y = offsets[i] + j;
-            //let id = i + "," + y;
-            //document.getElementById(id).classList.add('blue');
             fields[i][j + offsets[i]] = 'blue';
         }
     }
@@ -92,9 +112,6 @@ function addBluePawns() {
 function addWhitePawns() {
     for (let i = 4; i < 8; i++) {
         for (let j = 9; j <= 16 - i; j++) {
-            //let y = offsets[i] + j;
-            //let id = i + "," + y;
-            //document.getElementById(id).classList.add('white');
             fields[i][j + offsets[i]] = 'white';
         }
     }
@@ -103,9 +120,6 @@ function addWhitePawns() {
 function addBlackPawns() {
     for (let i = 9; i < 13; i++) {
         for (let j = 0; j < widths[i - 9]; j++) {
-            //let y = offsets[i] + j;
-            //let id = i + "," + y;
-            //document.getElementById(id).classList.add('black');
             fields[i][j + offsets[i]] = 'black';
         }
     }
@@ -114,9 +128,6 @@ function addBlackPawns() {
 function addRedPawns() {
     for (let i = 9; i < 13; i++) {
         for (let j = 9; j < widths[i]; j++) {
-            //let y = offsets[i] + j;
-            //let id = i + "," + y;
-            //document.getElementById(id).classList.add('red');
             fields[i][j + offsets[i]] = 'red';
         }
     }
