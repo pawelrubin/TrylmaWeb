@@ -141,9 +141,11 @@ function movePawn(pawn, destination) {
         fields[coordsDest[0]][coordsDest[1]] = document.getElementById(pawn).classList[1];
         fields[coordsPawn[0]][coordsPawn[1]] = 'gray';
 
+        document.getElementById(destination).classList.remove('gray');
         document.getElementById(destination).classList.add(document.getElementById(pawn).classList[1]);
         document.getElementById(pawn).classList.remove('clicked');
         document.getElementById(pawn).classList.remove(document.getElementById(pawn).classList[1]);
+        document.getElementById(pawn).classList.add('gray');
         pawn = null;
     }
 }
